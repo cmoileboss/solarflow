@@ -78,3 +78,14 @@ Un fichier d'exemple `data/eco2mix_sample.csv` est fourni pour tester le pipelin
 - TODO: Le refresh automatique du token RTE n'est pas encore implémenté proprement, pour l'instant on utilise un token fixe (à améliorer).
 - TODO: Ajouter de la gestion d'erreur sur le parsing CSV, ça plante parfois sur certains fichiers.
 - TODO: Il faudrait ajouter des tests.
+
+
+## Connaissances Techniques 
+
+MW — MégaWatt. C'est une unité de puissance (1 MW = 1 000 kW = 1 000 000 W). Sur RTE, c'est la puissance instantanée injectée sur le réseau à un instant T (ou moyennée sur le pas de temps, typiquement 15 min ou 1 h). Pour avoir une énergie, il faut multiplier par le temps → MWh.
+GHI — Global Horizontal Irradiance (Rayonnement Global Horizontal). C'est le rayonnement solaire total reçu sur une surface horizontale au sol, exprimé en W/m² (puissance) ou Wh/m² / kWh/m² (énergie cumulée). C'est la somme du direct et du diffus :
+GHI = DNI × cos(θz) + DHI
+où θz est l'angle zénithal du soleil. C'est la grandeur de référence pour estimer le potentiel d'une installation PV au sol.
+DNI — Direct Normal Irradiance (Rayonnement Direct Normal). C'est uniquement la composante directe du rayonnement, mesurée perpendiculairement aux rayons du soleil (suivi du soleil). Unité : W/m². C'est la grandeur clé pour le solaire à concentration (CSP) et les trackers.
+DHI — Diffuse Horizontal Irradiance (Rayonnement Diffus Horizontal). C'est la part du rayonnement diffusée par l'atmosphère (nuages, aérosols) reçue sur une surface horizontale, hors rayonnement direct. Unité : W/m². Par ciel couvert, le DHI peut représenter la quasi-totalité du GHI.
+En résumé pratique : MW = ce que produit ton parc, GHI/DNI/DHI = ce que le soleil envoie (la "ressource" qui explique la production). Si tu croises les deux, tu peux calculer un performance ratio ou caler un modèle de production
