@@ -24,7 +24,8 @@ CSV éCO2mix ──────┘
 ## Installation
 
 ```bash
-# Créer un environnement virtuel (Python 3.12+ requis)
+winget install Python.Python.3.13
+# Créer un environnement virtuel
 py -3.13 -m venv .venv
 source .venv/bin/activate      # Linux/macOS
 .venv\Scripts\activate         # Windows
