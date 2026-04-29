@@ -77,7 +77,7 @@ def fetch_rte_production(start_date, end_date):
             raise ValueError("La réponse de l'API RTE ne contient pas 'actual_generations_per_production_type'")
         
         with open(cache_file, "w") as f:
-            json.dump(data, f)
+            json.dump(data, f, indent=4)
 
     records = []
     for entry in data["actual_generations_per_production_type"]:

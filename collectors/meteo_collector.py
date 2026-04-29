@@ -74,7 +74,7 @@ def fetch_irradiance(lat, lon, start_date, end_date):
             raise RuntimeError(f"Erreur réseau Open-Meteo ({url}): {e}") from e
 
         with open(cache_file, "w") as f:
-            json.dump(data, f)
+            json.dump(data, f, indent=4)
 
     
     hourly = data["hourly"]
