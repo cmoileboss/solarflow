@@ -3,11 +3,13 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-def load_eco2mix(filepath):
+def load_eco2mix(filepath, start_date=None, end_date=None):
     """Charge un fichier CSV éCO2mix et retourne un DataFrame normalisé.
 
     Args:
         filepath: chemin vers le fichier CSV éCO2mix
+        start_date: date de début (str YYYY-MM-DD ou None)
+        end_date: date de fin inclusive (str YYYY-MM-DD ou None)
 
     Returns:
         DataFrame avec les colonnes timestamp, region, solar_production_mw, consumption_mw
@@ -42,4 +44,10 @@ def load_eco2mix(filepath):
     })
 
     df = df[["timestamp", "region", "solar_production_mw", "consumption_mw"]]
+
+    if start_date is not None:
+        df = df[df["timestamp"] >= pd.Timestamp(start_date)]
+    if end_date is not None:
+        df = df[df["timestamp"] < pd.Timestamp(end_date) + pd.Timedelta(days=1)]
+
     return df

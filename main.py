@@ -81,7 +81,7 @@ def main():
 
     # print("Chargement CSV éCO2mix...")
     logger.info("Chargement CSV éCO2mix...")
-    csv_df = load_eco2mix("data/eco2mix_sample.csv")
+    csv_df = load_eco2mix("data/eco2mix_sample.csv", args.start_date, args.end_date)
 
     # print("Agrégation des sources...")
     logger.info("Agrégation des sources...")
