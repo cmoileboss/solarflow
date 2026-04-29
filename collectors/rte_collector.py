@@ -72,8 +72,10 @@ def fetch_rte_production(start_date, end_date):
         response = requests.get(url, headers=headers, params=params)
         data = response.json()
         if data is None:
+            logger.error("La réponse de l'API RTE est vide")
             raise ValueError("La réponse de l'API RTE est vide")
         if "actual_generations_per_production_type" not in data:
+            logger.error("La réponse de l'API RTE ne contient pas 'actual_generations_per_production_type'")
             raise ValueError("La réponse de l'API RTE ne contient pas 'actual_generations_per_production_type'")
         
         with open(cache_file, "w") as f:

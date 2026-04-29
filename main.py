@@ -47,6 +47,20 @@ def main():
         logger.info(f'La date de début ({args.start_date}) est postérieure à la date de fin ({args.end_date}).')       
         raise ValueError(f"La date de début ({args.start_date}) est postérieure à la date de fin ({args.end_date}).")
 
+    # On vérifie que les dates sont au format YYYY-MM-DD
+    try:
+        date.fromisoformat(args.start_date)
+        date.fromisoformat(args.end_date)
+    except ValueError:
+        logger.error("Les dates doivent être au format YYYY-MM-DD.")
+        raise ValueError("Les dates doivent être au format YYYY-MM-DD.")
+    
+    # On vérifie que les dates ne sont pas dans le futur
+    today_str = date.today().strftime("%Y-%m-%d")
+    if args.end_date > today_str:
+        logger.error("Les dates ne peuvent pas être dans le futur.")
+        raise ValueError("Les dates ne peuvent pas être dans le futur.")
+    
     # print(f"SolarFlow démarré — période : {args.start_date} → {args.end_date}")
     # print(f"SolarFlow démarré — période : {args.start_date} → {args.end_date}")
     logger.info(f"SolarFlow démarré — période : {args.start_date} → {args.end_date}")
@@ -68,7 +82,7 @@ def main():
 
     # print("Chargement CSV éCO2mix...")
     logger.info("Chargement CSV éCO2mix...")
-    csv_df = load_eco2mix("data/eco2mix_sample.csv")
+    csv_df = load_eco2mix("data/eco2mix_sample.csv", args.start_date, args.end_date)
 
     # print("Agrégation des sources...")
     logger.info("Agrégation des sources...")
