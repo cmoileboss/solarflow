@@ -3,10 +3,13 @@ import json
 import os
 import requests
 import pandas as pd
+import logging  
 
 import config
 
 _CACHE_DIR = os.path.join(os.path.dirname(__file__), "..", "data", "cache")
+
+logger = logging.getLogger(__name__)
 
 
 def _cache_path(key):
@@ -41,13 +44,16 @@ def fetch_rte_production(start_date, end_date):
     Returns:
         DataFrame avec les colonnes timestamp, solar_production_mw
     """
-    print(f"Récupération production RTE du {start_date} au {end_date}...")
+    # print(f"Récupération production RTE du {start_date} au {end_date}...")
+    logger.info(f"Récupération production RTE du {start_date} au {end_date}...")
+
 
     cache_key = f"rte_{start_date}_{end_date}"
     cache_file = _cache_path(cache_key)
 
     if os.path.exists(cache_file):
-        print("  → chargement depuis le cache local")
+        # print("  → chargement depuis le cache local")
+        logger.info("  → chargement depuis le cache local")
         with open(cache_file, "r") as f:
             data = json.load(f)
     else:
@@ -89,5 +95,6 @@ def fetch_rte_production(start_date, end_date):
     df = pd.DataFrame(records)
     df["timestamp"] = pd.to_datetime(df["timestamp"], utc=True)
 
-    print(f"  → {len(df)} enregistrements récupérés depuis RTE")
+    # print(f"  → {len(df)} enregistrements récupérés depuis RTE")
+    logger.info(f"  → {len(df)} enregistrements récupérés depuis RTE")
     return df

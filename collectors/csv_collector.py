@@ -1,5 +1,7 @@
 import pandas as pd
+import logging
 
+logger = logging.getLogger(__name__)
 
 def load_eco2mix(filepath):
     """Charge un fichier CSV éCO2mix et retourne un DataFrame normalisé.
