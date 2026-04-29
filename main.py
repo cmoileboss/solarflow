@@ -9,7 +9,18 @@ from collectors.rte_collector import fetch_rte_production
 from collectors.meteo_collector import fetch_irradiance
 from collectors.csv_collector import load_eco2mix
 from processing.aggregator import aggregate
+import logging
 
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    handlers=[
+        logging.FileHandler("app.log", encoding="utf-8"),
+        logging.StreamHandler()
+    ],
+    force=True
+)
+logger = logging.getLogger()
 
 def parse_args():
     yesterday = (date.today() - timedelta(days=1)).strftime("%Y-%m-%d")
@@ -32,12 +43,17 @@ def parse_args():
 def main():
     args = parse_args()
 
-    print(f"SolarFlow démarré — période : {args.start_date} → {args.end_date}")
+    # print(f"SolarFlow démarré — période : {args.start_date} → {args.end_date}")
+    logger.info(f"SolarFlow démarré — période : {args.start_date} → {args.end_date}")
 
-    print("Collecte RTE...")
+    # print("Collecte RTE...")
+    logger.info("Collecte RTE...")
     rte_df = fetch_rte_production(args.start_date, args.end_date)
 
-    print("Collecte Open-Meteo...")
+    # print("Collecte Open-Meteo...")
+    logger.info("Collecte Open-Meteo...")
+    
+
     meteo_df = fetch_irradiance(
         config.SOLAR_PARK_LAT,
         config.SOLAR_PARK_LON,
@@ -45,10 +61,12 @@ def main():
         args.end_date,
     )
 
-    print("Chargement CSV éCO2mix...")
+    # print("Chargement CSV éCO2mix...")
+    logger.info("Chargement CSV éCO2mix...")
     csv_df = load_eco2mix("data/eco2mix_sample.csv")
 
-    print("Agrégation des sources...")
+    # print("Agrégation des sources...")
+    logger.info("Agrégation des sources...")
     result_df = aggregate(rte_df, meteo_df, csv_df)
 
     os.makedirs(config.OUTPUT_DIR, exist_ok=True)
@@ -62,7 +80,8 @@ def main():
     else:
         result_df.to_json(output_path, orient="records", date_format="iso", indent=2)
 
-    print(f"Dataset généré : {output_path} ({len(result_df)} lignes)")
+    # print(f"Dataset généré : {output_path} ({len(result_df)} lignes)")
+    logger.info(f"Dataset généré : {output_path} ({len(result_df)} lignes)")
 
 
 if __name__ == "__main__":

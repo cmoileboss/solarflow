@@ -3,8 +3,10 @@ import os
 from datetime import date
 import requests
 import pandas as pd
-
+import logging
 import config
+
+logger = logging.getLogger(__name__)
 
 METEO_ARCHIVE_URL = "https://archive-api.open-meteo.com/v1/archive"
 _CACHE_DIR = os.path.join(os.path.dirname(__file__), "..", "data", "cache")
@@ -38,13 +40,15 @@ def fetch_irradiance(lat, lon, start_date, end_date):
     Returns:
         DataFrame avec les colonnes timestamp, ghi, dni, dhi
     """
-    print(f"Récupération irradiance Open-Meteo ({lat}, {lon})...")
+    # print(f"Récupération irradiance Open-Meteo ({lat}, {lon})...")
+    logger.info(f"Récupération irradiance Open-Meteo ({lat}, {lon}) pour la période {start_date} → {end_date}")
 
     cache_key = f"meteo_{lat}_{lon}_{start_date}_{end_date}"
     cache_file = _cache_path(cache_key)
 
     if os.path.exists(cache_file):
-        print("  → chargement depuis le cache local")
+        # print("  → chargement depuis le cache local")
+        logger.info("  → chargement depuis le cache local")
         with open(cache_file, "r") as f:
             data = json.load(f)
     else:
@@ -77,5 +81,6 @@ def fetch_irradiance(lat, lon, start_date, end_date):
         "dhi": hourly["diffuse_radiation"],
     })
 
-    print(f"  → {len(df)} enregistrements récupérés depuis Open-Meteo")
+    # print(f"  → {len(df)} enregistrements récupérés depuis Open-Meteo")
+    logger.info(f"  → {len(df)} enregistrements récupérés depuis Open-Meteo")
     return df
