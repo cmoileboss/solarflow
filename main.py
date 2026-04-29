@@ -32,6 +32,9 @@ def parse_args():
 def main():
     args = parse_args()
 
+    if args.start_date > args.end_date:
+        raise ValueError(f"La date de début ({args.start_date}) est postérieure à la date de fin ({args.end_date}).")
+
     print(f"SolarFlow démarré — période : {args.start_date} → {args.end_date}")
 
     print("Collecte RTE...")
