@@ -65,7 +65,11 @@ def fetch_rte_production(start_date, end_date):
 
         response = requests.get(url, headers=headers, params=params)
         data = response.json()
-
+        if data is None:
+            raise ValueError("La réponse de l'API RTE est vide")
+        if "actual_generations_per_production_type" not in data:
+            raise ValueError("La réponse de l'API RTE ne contient pas 'actual_generations_per_production_type'")
+        
         with open(cache_file, "w") as f:
             json.dump(data, f)
 
@@ -73,6 +77,10 @@ def fetch_rte_production(start_date, end_date):
     for entry in data["actual_generations_per_production_type"]:
         if entry["production_type"] == "SOLAR":
             for value in entry["values"]:
+                if "start_date" not in value or "end_date" not in value or "value" not in value:
+                    continue
+                if value["start_date"] < start_date or value["end_date"] > end_date:
+                    continue
                 records.append({
                     "timestamp": value["start_date"],
                     "solar_production_mw": value["value"],

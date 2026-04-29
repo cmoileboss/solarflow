@@ -8,3 +8,4 @@ output/*.json
 venv/
 data/*.csv
 data/
+Swagger - API Actual Generation.json

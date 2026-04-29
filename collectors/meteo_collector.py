@@ -62,12 +62,17 @@ def fetch_irradiance(lat, lon, start_date, end_date):
             response = requests.get(url, params=params)
             response.raise_for_status()
             data = response.json()
+            if data is None:
+                raise ValueError("La réponse de l'API Open-Meteo est vide")
+            if "hourly" not in data:
+                raise ValueError("La réponse de l'API Open-Meteo ne contient pas 'hourly'")
         except requests.exceptions.RequestException as e:
             raise RuntimeError(f"Erreur réseau Open-Meteo ({url}): {e}") from e
 
         with open(cache_file, "w") as f:
             json.dump(data, f)
 
+    
     hourly = data["hourly"]
 
     df = pd.DataFrame({
