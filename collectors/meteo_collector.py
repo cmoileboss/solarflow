@@ -59,7 +59,7 @@ def fetch_irradiance(lat, lon, start_date, end_date):
             "hourly": "shortwave_radiation,direct_radiation,diffuse_radiation",
             "start_date": start_date,
             "end_date": end_date,
-            "timezone": "auto",
+            "timezone": "UTC", 
         }
 
         try:
