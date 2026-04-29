@@ -1,0 +1,185 @@
+<mxfile host="Electron">
+  <diagram name="Page-1" id="dAm80DfQHNs3_VbltTE6">
+    <mxGraphModel dx="2480" dy="2010" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="590" width="1190" x="180" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-2" edge="1" parent="1" source="UOKUza2UFZ7Mlwn4h34g-1" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=0.153;exitY=-0.006;exitDx=0;exitDy=0;exitPerimeter=0;width=4;startSize=7.27;" value="">
+          <mxGeometry height="100" relative="1" width="100" as="geometry">
+            <mxPoint x="560" y="480" as="sourcePoint" />
+            <mxPoint x="360" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="140" width="340" x="190" y="-60" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="140" width="340" x="640" y="-60" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="140" width="340" x="1050" y="-60" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-6" edge="1" parent="1" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=0.144;exitY=-0.009;exitDx=0;exitDy=0;exitPerimeter=0;width=4;startSize=7.27;" value="">
+          <mxGeometry height="100" relative="1" width="100" as="geometry">
+            <mxPoint x="801" y="277" as="sourcePoint" />
+            <mxPoint x="800" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-7" edge="1" parent="1" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=0.144;exitY=-0.009;exitDx=0;exitDy=0;exitPerimeter=0;width=4;startSize=7.27;" value="">
+          <mxGeometry height="100" relative="1" width="100" as="geometry">
+            <mxPoint x="1201" y="277" as="sourcePoint" />
+            <mxPoint x="1200" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-8" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;API RTE :&amp;nbsp;&lt;br&gt;&lt;br&gt;&lt;/h1&gt;" vertex="1">
+          <mxGeometry height="120" width="320" x="200" y="-50" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-9" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;API OpenMétéo:&lt;/h1&gt;&lt;p&gt;.&lt;/p&gt;" vertex="1">
+          <mxGeometry height="120" width="333" x="647" y="-50" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-10" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;eco2mix_sample.csv:&amp;nbsp;&lt;br&gt;&lt;br&gt;&lt;/h1&gt;" vertex="1">
+          <mxGeometry height="120" width="320" x="1060" y="-50" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-13" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="90" width="238" x="272" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-14" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="90" width="270" x="660" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-16" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;RTE_collector.py&lt;/h1&gt;" vertex="1">
+          <mxGeometry height="30" width="226" x="294" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-18" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="90" width="270" x="1050" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-19" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;meteo_collector.py&lt;/h1&gt;" vertex="1">
+          <mxGeometry height="40" width="240" x="680" y="295" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-20" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;csv_collector.py&lt;/h1&gt;" vertex="1">
+          <mxGeometry height="45" width="200" x="1090" y="295" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-21" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="130" width="1050" x="270" y="445" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-22" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Main.py&lt;/h1&gt;" vertex="1">
+          <mxGeometry height="35" width="200" x="280" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-23" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="60" width="130" x="-10" y="405" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-24" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;PYTHON&lt;/h1&gt;" vertex="1">
+          <mxGeometry height="45" width="110" y="405" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-35" edge="1" parent="1" source="UOKUza2UFZ7Mlwn4h34g-21" style="endArrow=classic;html=1;rounded=0;exitX=0.105;exitY=0.015;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.454;entryY=0.956;entryDx=0;entryDy=0;entryPerimeter=0;" target="UOKUza2UFZ7Mlwn4h34g-13" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="690" y="360" as="sourcePoint" />
+            <mxPoint x="740" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-36" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;entryX=0.396;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" target="UOKUza2UFZ7Mlwn4h34g-14" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="767" y="450" as="sourcePoint" />
+            <mxPoint x="770" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-38" edge="1" parent="1" source="UOKUza2UFZ7Mlwn4h34g-21" style="endArrow=classic;html=1;rounded=0;exitX=0.86;exitY=0.015;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.456;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" target="UOKUza2UFZ7Mlwn4h34g-18" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="1173" y="420" />
+            </Array>
+            <mxPoint x="1180" y="496" as="sourcePoint" />
+            <mxPoint x="1175" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-39" edge="1" parent="1" source="UOKUza2UFZ7Mlwn4h34g-13" style="endArrow=classic;html=1;rounded=0;entryX=0.068;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.294;exitY=1.022;exitDx=0;exitDy=0;exitPerimeter=0;" target="UOKUza2UFZ7Mlwn4h34g-21" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="690" y="360" as="sourcePoint" />
+            <mxPoint x="740" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-40" edge="1" parent="1" source="UOKUza2UFZ7Mlwn4h34g-14" style="endArrow=classic;html=1;rounded=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.436;entryY=0.008;entryDx=0;entryDy=0;entryPerimeter=0;" target="UOKUza2UFZ7Mlwn4h34g-21" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="731" y="420" as="sourcePoint" />
+            <mxPoint x="728" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-41" edge="1" parent="1" source="UOKUza2UFZ7Mlwn4h34g-18" style="endArrow=classic;html=1;rounded=0;exitX=0.296;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1131" y="410" as="sourcePoint" />
+            <mxPoint x="1130" y="450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-42" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="140" width="678" x="272" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-43" edge="1" parent="1" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;entryX=0.609;entryY=1.031;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.618;exitY=0.029;exitDx=0;exitDy=0;exitPerimeter=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points" />
+            <mxPoint x="675.844" y="640" as="sourcePoint" />
+            <mxPoint x="675.4499999999998" y="574.9700000000003" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-44" edge="1" parent="1" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;exitX=0.284;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="571.1999999999998" y="575" as="sourcePoint" />
+            <mxPoint x="571" y="640" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-45" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Aggregator.py&lt;/h1&gt;" vertex="1">
+          <mxGeometry height="40" width="170" x="280" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-46" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="110" width="260" x="1060" y="920" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-51" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Contient une fonction aggregate qui prend en parametres les dataframes rte, meteo et issue du csv. Il normalise les données temporelles puis regroupe celle ci en fonction du timestamp. il merge les données meteo et rte avant de faire un deuxieme merge avec les données csv aggrégées. c&#39;est ce deuxieme merge qui sera renvoyé quand la fonction sera appellée .&amp;nbsp;&amp;nbsp;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="596" x="294" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-52" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Lorsqu&#39;on exécute le code, le fichier main, s&#39;execute où il appelle les fichiers : rte_collector , meteo_collector, csv_collector . ces fichiers vont s&#39;éxecuter et lui transmettre des données qui seront envoyées a aggregator qui va renvoyé les données formatées.Main va ensuite crée le fichier dans un dossier output soit en ficheir csv soit en json.&amp;nbsp;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="1020" x="290" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-53" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Passe l&#39;appel API a RTE , récupere les données sous forme de json les charge dans le cache" vertex="1">
+          <mxGeometry height="45" width="210" x="280" y="335" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-54" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Passe l&#39;appel API a openmeteo , récupere les données sous forme de json les charge dans le cache" vertex="1">
+          <mxGeometry height="50" width="200" x="695" y="335" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-55" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="charge et lis les données du fichier eco2mix_sample.csv" vertex="1">
+          <mxGeometry height="30" width="200" x="1090" y="342.5" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-56" edge="1" parent="1" source="UOKUza2UFZ7Mlwn4h34g-21" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;entryX=0.527;entryY=0.018;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.868;exitY=0.992;exitDx=0;exitDy=0;exitPerimeter=0;" target="UOKUza2UFZ7Mlwn4h34g-50" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1181" y="574" as="sourcePoint" />
+            <mxPoint x="1187" y="1042" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-50" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Solarflow_Data.csv&lt;/h1&gt;&lt;p&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Fichier de données qui regroupe la production solaire par timestamp.&amp;nbsp;&lt;/font&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="120" width="220" x="1070" y="920" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-57" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="renvoi les données de productions passé, par filiere.&amp;nbsp;" vertex="1">
+          <mxGeometry height="70" width="300" x="210" y="-10" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-58" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="renvoi les données météo par h." vertex="1">
+          <mxGeometry height="50" width="290" x="660" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-59" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="données de consommation par région et date&amp;nbsp;" vertex="1">
+          <mxGeometry height="50" width="240" x="1110" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-60" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="100" width="170" x="610" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-61" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="requete HTTP GET depuis Meteo_collector" vertex="1">
+          <mxGeometry height="60" width="120" x="635" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-63" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="100" width="170" x="170" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="UOKUza2UFZ7Mlwn4h34g-64" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="récupere un TOKEN pusi envoi une requete HTTP GET pour avoir les données" vertex="1">
+          <mxGeometry height="70" width="110" x="200" y="140" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
