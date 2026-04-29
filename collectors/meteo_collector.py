@@ -67,10 +67,13 @@ def fetch_irradiance(lat, lon, start_date, end_date):
             response.raise_for_status()
             data = response.json()
             if data is None:
+                logger.error("La réponse de l'API Open-Meteo est vide")
                 raise ValueError("La réponse de l'API Open-Meteo est vide")
             if "hourly" not in data:
+                logger.error("La réponse de l'API Open-Meteo ne contient pas 'hourly'")
                 raise ValueError("La réponse de l'API Open-Meteo ne contient pas 'hourly'")
         except requests.exceptions.RequestException as e:
+            logger.error(f"Erreur réseau Open-Meteo ({url}): {e}")
             raise RuntimeError(f"Erreur réseau Open-Meteo ({url}): {e}") from e
 
         with open(cache_file, "w") as f:
