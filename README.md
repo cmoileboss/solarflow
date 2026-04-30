@@ -90,3 +90,13 @@ où θz est l'angle zénithal du soleil. C'est la grandeur de référence pour e
 DNI — Direct Normal Irradiance (Rayonnement Direct Normal). C'est uniquement la composante directe du rayonnement, mesurée perpendiculairement aux rayons du soleil (suivi du soleil). Unité : W/m². C'est la grandeur clé pour le solaire à concentration (CSP) et les trackers.
 DHI — Diffuse Horizontal Irradiance (Rayonnement Diffus Horizontal). C'est la part du rayonnement diffusée par l'atmosphère (nuages, aérosols) reçue sur une surface horizontale, hors rayonnement direct. Unité : W/m². Par ciel couvert, le DHI peut représenter la quasi-totalité du GHI.
 En résumé pratique : MW = ce que produit ton parc, GHI/DNI/DHI = ce que le soleil envoie (la "ressource" qui explique la production). Si tu croises les deux, tu peux calculer un performance ratio ou caler un modèle de production
+
+## Gestion des valeurs manquantes 
+
+Après analyse des données, la colonne solar_production_mw contient des valeurs manquantes (NaN) principalement sur la période de janvier (pour une analyse des données entre le 01.01.2026 et le 04.27.2026)
+Choix retenu : Imputation par zéro (fillna(0))
+
+Justification :
+La suppression a été écartée car elle ferait perdre des plages horaires entières, faussant le calcul de production totale.
+L'interpolation a été écartée car elle inventerait des valeurs de production qui n'ont peut-être jamais existé, ce qui n'est pas acceptable dans un contexte de mesure énergétique.
+L'imputation à zéro a été retenue car une donnée manquante en production solaire signifie soit une absence de production (nuit, panne), soit un défaut d'enregistrement. Dans les deux cas, considérer la production comme nulle est le choix le plus conservateur et honnête.
