@@ -61,15 +61,11 @@ def main():
         logger.error("Les dates ne peuvent pas être dans le futur.")
         raise ValueError("Les dates ne peuvent pas être dans le futur.")
     
-    # print(f"SolarFlow démarré — période : {args.start_date} → {args.end_date}")
-    # print(f"SolarFlow démarré — période : {args.start_date} → {args.end_date}")
     logger.info(f"SolarFlow démarré — période : {args.start_date} → {args.end_date}")
 
-    # print("Collecte RTE...")
     logger.info("Collecte RTE...")
     rte_df = fetch_rte_production(args.start_date, args.end_date)
 
-    # print("Collecte Open-Meteo...")
     logger.info("Collecte Open-Meteo...")
     
 
@@ -80,11 +76,9 @@ def main():
         args.end_date,
     )
 
-    # print("Chargement CSV éCO2mix...")
     logger.info("Chargement CSV éCO2mix...")
     csv_df = load_eco2mix("data/eco2mix_sample.csv", args.start_date, args.end_date)
 
-    # print("Agrégation des sources...")
     logger.info("Agrégation des sources...")
     result_df = aggregate(rte_df, meteo_df, csv_df)
 
@@ -99,7 +93,6 @@ def main():
     else:
         result_df.to_json(output_path, orient="records", date_format="iso", indent=2)
 
-    # print(f"Dataset généré : {output_path} ({len(result_df)} lignes)")
     logger.info(f"Dataset généré : {output_path} ({len(result_df)} lignes)")
 
 

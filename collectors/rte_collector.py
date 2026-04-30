@@ -44,7 +44,6 @@ def fetch_rte_production(start_date, end_date):
     Returns:
         DataFrame avec les colonnes timestamp, solar_production_mw
     """
-    # print(f"Récupération production RTE du {start_date} au {end_date}...")
     logger.info(f"Récupération production RTE du {start_date} au {end_date}...")
 
 
@@ -52,7 +51,6 @@ def fetch_rte_production(start_date, end_date):
     cache_file = _cache_path(cache_key)
 
     if os.path.exists(cache_file):
-        # print("  → chargement depuis le cache local")
         logger.info("  → chargement depuis le cache local")
         with open(cache_file, "r") as f:
             data = json.load(f)
@@ -75,7 +73,7 @@ def fetch_rte_production(start_date, end_date):
             logger.error("La réponse de l'API RTE est vide")
             raise ValueError("La réponse de l'API RTE est vide")
         if "actual_generations_per_production_type" not in data:
-            logger.error("La réponse de l'API RTE ne contient pas 'actual_generations_per_production_type'")
+            logger.error("La réponse de l'API RTE ne contient pas 'actual_generations_per_production_type'. Réponse : %s", data)
             raise ValueError("La réponse de l'API RTE ne contient pas 'actual_generations_per_production_type'")
         
         with open(cache_file, "w") as f:
@@ -89,7 +87,9 @@ def fetch_rte_production(start_date, end_date):
             for value in entry["values"]:
                 if "start_date" not in value or "end_date" not in value or "value" not in value:
                     continue
-                if value["start_date"] < start_date or value["end_date"] > end_date:
+                if value["start_date"][:10] < start_date or value["start_date"][:10] > end_date:
+                    continue
+                if value["value"] is not None and value["value"] < 0:
                     continue
                 records.append({
                     "timestamp": value["start_date"],
@@ -99,8 +99,5 @@ def fetch_rte_production(start_date, end_date):
     df = pd.DataFrame(records)
     df["timestamp"] = pd.to_datetime(df["timestamp"], utc=True)
 
-    df['solar_production_mw'].interpolate(method='linear', inplace=True)
-
-    # print(f"  → {len(df)} enregistrements récupérés depuis RTE")
     logger.info(f"  → {len(df)} enregistrements récupérés depuis RTE")
     return df

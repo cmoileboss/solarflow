@@ -30,13 +30,13 @@ def load_eco2mix(filepath, start_date=None, end_date=None):
     df = df[df["Date"] != "Date"]
 
     # On vérifie que les colonnes nécessaires sont présentes
-    required_columns = {"Date", "Heure", "Région", "Solaire (MW)", "Consommation (MW)"}
+    required_columns = {"Date - Heure", "Région", "Solaire (MW)", "Consommation (MW)"}
     if not required_columns.issubset(df.columns):
         missing = required_columns - set(df.columns)
         logger.error(f"Le fichier CSV éCO2mix n'a pas les colonnes suivantes : {', '.join(missing)}")
         raise ValueError(f"Le fichier CSV éCO2mix n'a pas les colonnes suivantes : {', '.join(missing)}")
 
-    df["timestamp"] = pd.to_datetime(df["Date"] + " " + df["Heure"], format="%Y-%m-%d %H:%M")
+    df["timestamp"] = pd.to_datetime(df["Date - Heure"], utc=True)
     df = df.rename(columns={
         "Région": "region",
         "Solaire (MW)": "solar_production_mw",
@@ -45,9 +45,13 @@ def load_eco2mix(filepath, start_date=None, end_date=None):
 
     df = df[["timestamp", "region", "solar_production_mw", "consumption_mw"]]
 
+    for col in ("solar_production_mw", "consumption_mw"):
+        df[col] = pd.to_numeric(df[col], errors="coerce")
+        df[col] = df[col].where(df[col] >= 0, other=None)
+
     if start_date is not None:
-        df = df[df["timestamp"] >= pd.Timestamp(start_date)]
+        df = df[df["timestamp"] >= pd.Timestamp(start_date, tz="UTC")]
     if end_date is not None:
-        df = df[df["timestamp"] < pd.Timestamp(end_date) + pd.Timedelta(days=1)]
+        df = df[df["timestamp"] < pd.Timestamp(end_date, tz="UTC") + pd.Timedelta(days=1)]
 
     return df
