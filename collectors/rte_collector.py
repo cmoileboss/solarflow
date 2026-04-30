@@ -65,8 +65,8 @@ def fetch_rte_production(start_date, end_date):
         }
 
         params = {
-            "start_date": f"{start_date}T00:00:00+02:00",
-            "end_date": f"{end_date}T23:59:59+02:00",
+            "start_date": f"{start_date}T00:00:00+00:00",
+            "end_date": f"{end_date}T23:59:59+00:00",
         }
 
         response = requests.get(url, headers=headers, params=params)
@@ -80,6 +80,8 @@ def fetch_rte_production(start_date, end_date):
         
         with open(cache_file, "w") as f:
             json.dump(data, f, indent=4)
+ 
+
 
     records = []
     for entry in data["actual_generations_per_production_type"]:
