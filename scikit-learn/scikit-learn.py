@@ -2,6 +2,8 @@ import os
 import pandas as pd
         
 from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score, root_mean_squared_error
 
 
 class ScikitLearn:
@@ -43,8 +45,28 @@ class ScikitLearn:
         self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(
             self.input, self.output, test_size=0.2, random_state=42
         )
-    
 
-        
+    def train_linear_regression(self):
+        """Entraîne un modèle de régression linéaire sur les données d'entraînement préparées"""
+        self.model = LinearRegression()
+        self.model.fit(self.X_train, self.y_train)
 
+    def prediction_linear_regression(self):
+        """Fait des prédictions sur l'ensemble de test et retourne les résultats"""
+        self.y_pred = self.model.predict(self.X_test)
+        return self.y_pred
     
+    def get_metrics(self):
+        """Retourne les métriques d'évaluation du modèle sur l'ensemble de test"""
+        mae = mean_absolute_error(self.y_test, self.y_pred)
+        mse = mean_squared_error(self.y_test, self.y_pred)
+        rmse = root_mean_squared_error(self.y_test, self.y_pred)
+        r2 = r2_score(self.y_test, self.y_pred)
+        return {"MAE": mae, "MSE": mse, "RMSE": rmse, "R2": r2}
+
+
+scikit = ScikitLearn()
+scikit.train_linear_regression()
+predictions = scikit.prediction_linear_regression()
+metrics = scikit.get_metrics()
+print("Métriques :", metrics)
