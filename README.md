@@ -93,10 +93,6 @@ En résumé pratique : MW = ce que produit ton parc, GHI/DNI/DHI = ce que le sol
 
 ## Gestion des valeurs manquantes 
 
-Après analyse des données, la colonne solar_production_mw contient des valeurs manquantes (NaN) principalement sur la période de janvier (pour une analyse des données entre le 01.01.2026 et le 04.27.2026)
-Choix retenu : Imputation par zéro (fillna(0))
-
-Justification :
-La suppression a été écartée car elle ferait perdre des plages horaires entières, faussant le calcul de production totale.
-L'interpolation a été écartée car elle inventerait des valeurs de production qui n'ont peut-être jamais existé, ce qui n'est pas acceptable dans un contexte de mesure énergétique.
-L'imputation à zéro a été retenue car une donnée manquante en production solaire signifie soit une absence de production (nuit, panne), soit un défaut d'enregistrement. Dans les deux cas, considérer la production comme nulle est le choix le plus conservateur et honnête.
+Les données analysées couvrent la période du 1er janvier 2026 au 27 avril 2026, soit 2808 lignes au total.
+Une analyse préalable a révélé que la colonne solar_production_mw contient 59 valeurs manquantes sur 2808 lignes, soit environ 2,1% des données. Les colonnes ghi, dni et dhi ne présentent aucune valeur manquante.
+Trois stratégies ont été envisagées. La suppression a été écartée car elle ferait perdre des lignes valides et fausserait le calcul de production totale. L'imputation par zéro a également été écartée car les NaN apparaissent aussi en journée - remplacer par zéro des heures de plein soleil introduirait une erreur de mesure. L'interpolation linéaire a donc été retenue : les NaN étant peu nombreux et isolés sur une série temporelle continue, cette méthode estime les valeurs manquantes de façon cohérente à partir des points connus autour.
