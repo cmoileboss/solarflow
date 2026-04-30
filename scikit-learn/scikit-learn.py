@@ -7,11 +7,18 @@ from sklearn.model_selection import train_test_split
 class ScikitLearn:
     """Classe d'entraînement d'un modèle de régression linéaire pour prédire la production solaire à partir des données d'irradiance.
     Les données d'entraînement sont chargées depuis les fichiers CSV générés par le pipeline de collecte. Les fichiers doivent être nommés "solarflow_YYYY-MM-DD.csv" et contenir au moins les colonnes timestamp, ghi, dni, dhi, solar_production_mw_csv et être au format csv."""
+    
     def __init__(self):
+        self.prepare_data()
+    
+
+    def prepare_data(self):
+        """Prépare les données d'entraînement en chargeant les fichiers CSV, nettoyant les données et séparant en ensembles d'entraînement et de test."""
         self.charge_data()
         self.clean_zero_data() # on enlève les données de nuit où ghi, dni, dhi sont à 0
         self.input = self.data[["ghi", "dni", "dhi"]]
         self.output = self.data["solar_production_mw_csv"]
+        self.separate_train_test()
 
     def charge_data(self):
         """Charge les données d'entraînement depuis les fichiers CSV générés par le pipeline de collecte.
