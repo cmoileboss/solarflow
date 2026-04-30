@@ -17,7 +17,16 @@ def aggregate(rte_df, meteo_df, csv_df):
     meteo_df["timestamp"] = pd.to_datetime(meteo_df["timestamp"], utc=True).dt.floor("h")
     csv_df["timestamp"] = pd.to_datetime(csv_df["timestamp"], utc=True).dt.floor("h")
 
-    # Moyenne des doublons par (timestamp, région) avant la somme nationale
+    rte_df = rte_df.groupby("timestamp").agg(
+        solar_production_mw_rte=("solar_production_mw", "mean")
+    ).reset_index()
+
+    meteo_df = meteo_df.groupby("timestamp").agg(
+        ghi=("ghi", "mean"),
+        dni=("dni", "mean"),
+        dhi=("dhi", "mean"),
+    ).reset_index()
+    
     csv_with_no_duplicates = csv_df.groupby(["timestamp", "region"]).agg(
         solar_production_mw=("solar_production_mw", "mean"),
         consumption_mw=("consumption_mw", "mean"),
@@ -31,7 +40,12 @@ def aggregate(rte_df, meteo_df, csv_df):
     # TODO: nettoyer les données avant le merge ?
     merged = pd.merge(rte_df, meteo_df, on="timestamp", how="outer")
     merged = pd.merge(merged, csv_agg, on="timestamp", how="outer")
-
+    
     merged = merged.sort_values("timestamp").reset_index(drop=True)
+    merged['solar_production_mw'].interpolate(method='linear', inplace=True)
+    merged['consumption_mw'].interpolate(method='linear', inplace=True)
+    merged['ghi'].interpolate(method='linear', inplace=True)
+    merged['dni'].interpolate(method='linear', inplace=True)
+    merged['dhi'].interpolate(method='linear', inplace=True)
 
     return merged

@@ -99,7 +99,5 @@ def fetch_rte_production(start_date, end_date):
     df = pd.DataFrame(records)
     df["timestamp"] = pd.to_datetime(df["timestamp"], utc=True)
 
-    df['solar_production_mw'].interpolate(method='linear', inplace=True)
-
     logger.info(f"  → {len(df)} enregistrements récupérés depuis RTE")
     return df

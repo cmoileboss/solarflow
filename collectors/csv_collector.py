@@ -49,9 +49,6 @@ def load_eco2mix(filepath, start_date=None, end_date=None):
         df[col] = pd.to_numeric(df[col], errors="coerce")
         df[col] = df[col].where(df[col] >= 0, other=None)
 
-    df['solar_production_mw'].interpolate(method='linear', inplace=True)
-    df['consumption_mw'].interpolate(method='linear', inplace=True)
-
     if start_date is not None:
         df = df[df["timestamp"] >= pd.Timestamp(start_date, tz="UTC")]
     if end_date is not None:

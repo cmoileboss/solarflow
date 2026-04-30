@@ -90,9 +90,5 @@ def fetch_irradiance(lat, lon, start_date, end_date):
     for col in ("ghi", "dni", "dhi"):
         df[col] = df[col].where(df[col] >= 0, other=None)
 
-    df['ghi'].interpolate(method='linear', inplace=True)
-    df['dni'].interpolate(method='linear', inplace=True)
-    df['dhi'].interpolate(method='linear', inplace=True)
-
     logger.info(f"  → {len(df)} enregistrements récupérés depuis Open-Meteo")
     return df
