@@ -89,6 +89,9 @@ def fetch_irradiance(lat, lon, start_date, end_date):
         "dhi": hourly["diffuse_radiation"],
     })
 
+    for col in ("ghi", "dni", "dhi"):
+        df[col] = df[col].where(df[col] >= 0, other=None)
+
     # print(f"  → {len(df)} enregistrements récupérés depuis Open-Meteo")
     logger.info(f"  → {len(df)} enregistrements récupérés depuis Open-Meteo")
     return df
