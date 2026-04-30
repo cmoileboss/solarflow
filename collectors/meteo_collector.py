@@ -89,6 +89,10 @@ def fetch_irradiance(lat, lon, start_date, end_date):
         "dhi": hourly["diffuse_radiation"],
     })
 
+    df['ghi'].interpolate(method='linear', inplace=True)
+    df['dni'].interpolate(method='linear', inplace=True)
+    df['dhi'].interpolate(method='linear', inplace=True)
+
     # print(f"  → {len(df)} enregistrements récupérés depuis Open-Meteo")
     logger.info(f"  → {len(df)} enregistrements récupérés depuis Open-Meteo")
     return df
