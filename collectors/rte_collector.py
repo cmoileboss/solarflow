@@ -44,7 +44,6 @@ def fetch_rte_production(start_date, end_date):
     Returns:
         DataFrame avec les colonnes timestamp, solar_production_mw
     """
-    # print(f"Récupération production RTE du {start_date} au {end_date}...")
     logger.info(f"Récupération production RTE du {start_date} au {end_date}...")
 
 
@@ -52,7 +51,6 @@ def fetch_rte_production(start_date, end_date):
     cache_file = _cache_path(cache_key)
 
     if os.path.exists(cache_file):
-        # print("  → chargement depuis le cache local")
         logger.info("  → chargement depuis le cache local")
         with open(cache_file, "r") as f:
             data = json.load(f)
@@ -80,6 +78,8 @@ def fetch_rte_production(start_date, end_date):
         
         with open(cache_file, "w") as f:
             json.dump(data, f, indent=4)
+ 
+
 
     records = []
     for entry in data["actual_generations_per_production_type"]:
@@ -99,6 +99,7 @@ def fetch_rte_production(start_date, end_date):
     df = pd.DataFrame(records)
     df["timestamp"] = pd.to_datetime(df["timestamp"], utc=True)
 
-    # print(f"  → {len(df)} enregistrements récupérés depuis RTE")
+    df['solar_production_mw'].interpolate(method='linear', inplace=True)
+
     logger.info(f"  → {len(df)} enregistrements récupérés depuis RTE")
     return df

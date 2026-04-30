@@ -90,3 +90,12 @@ où θz est l'angle zénithal du soleil. C'est la grandeur de référence pour e
 DNI — Direct Normal Irradiance (Rayonnement Direct Normal). C'est uniquement la composante directe du rayonnement, mesurée perpendiculairement aux rayons du soleil (suivi du soleil). Unité : W/m². C'est la grandeur clé pour le solaire à concentration (CSP) et les trackers.
 DHI — Diffuse Horizontal Irradiance (Rayonnement Diffus Horizontal). C'est la part du rayonnement diffusée par l'atmosphère (nuages, aérosols) reçue sur une surface horizontale, hors rayonnement direct. Unité : W/m². Par ciel couvert, le DHI peut représenter la quasi-totalité du GHI.
 En résumé pratique : MW = ce que produit ton parc, GHI/DNI/DHI = ce que le soleil envoie (la "ressource" qui explique la production). Si tu croises les deux, tu peux calculer un performance ratio ou caler un modèle de production
+
+## Gestion des valeurs manquantes 
+
+Les données analysées couvrent la période du 1er janvier 2026 au 27 avril 2026, soit 2808 lignes au total.
+Une analyse préalable a révélé que la colonne solar_production_mw contient 59 valeurs manquantes sur 2808 lignes, soit environ 2,1% des données. Les colonnes ghi, dni et dhi ne présentent aucune valeur manquante.
+Trois stratégies ont été envisagées. La suppression a été écartée car elle ferait perdre des lignes valides et fausserait le calcul de production totale. L'imputation par zéro a également été écartée car les NaN apparaissent aussi en journée - remplacer par zéro des heures de plein soleil introduirait une erreur de mesure. L'interpolation linéaire a donc été retenue : les NaN étant peu nombreux et isolés sur une série temporelle continue, cette méthode estime les valeurs manquantes de façon cohérente à partir des points connus autour.
+
+Ajout de cette fonction dans les collectors df['solar_production_mw'].interpolate(method='linear', inplace=True)
+

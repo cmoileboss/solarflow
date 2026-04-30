@@ -40,14 +40,12 @@ def fetch_irradiance(lat, lon, start_date, end_date):
     Returns:
         DataFrame avec les colonnes timestamp, ghi, dni, dhi
     """
-    # print(f"Récupération irradiance Open-Meteo ({lat}, {lon})...")
     logger.info(f"Récupération irradiance Open-Meteo ({lat}, {lon}) pour la période {start_date} → {end_date}")
 
     cache_key = f"meteo_{lat}_{lon}_{start_date}_{end_date}"
     cache_file = _cache_path(cache_key)
 
     if os.path.exists(cache_file):
-        # print("  → chargement depuis le cache local")
         logger.info("  → chargement depuis le cache local")
         with open(cache_file, "r") as f:
             data = json.load(f)
@@ -92,6 +90,9 @@ def fetch_irradiance(lat, lon, start_date, end_date):
     for col in ("ghi", "dni", "dhi"):
         df[col] = df[col].where(df[col] >= 0, other=None)
 
-    # print(f"  → {len(df)} enregistrements récupérés depuis Open-Meteo")
+    df['ghi'].interpolate(method='linear', inplace=True)
+    df['dni'].interpolate(method='linear', inplace=True)
+    df['dhi'].interpolate(method='linear', inplace=True)
+
     logger.info(f"  → {len(df)} enregistrements récupérés depuis Open-Meteo")
     return df
