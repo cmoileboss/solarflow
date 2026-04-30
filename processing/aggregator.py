@@ -18,7 +18,7 @@ def aggregate(rte_df, meteo_df, csv_df):
     csv_df["timestamp"] = pd.to_datetime(csv_df["timestamp"], utc=True).dt.floor("h")
 
     rte_df = rte_df.groupby("timestamp").agg(
-        solar_production_mw_rte=("solar_production_mw", "mean")
+        solar_production_mw=("solar_production_mw", "mean")
     ).reset_index()
 
     meteo_df = meteo_df.groupby("timestamp").agg(
@@ -42,6 +42,7 @@ def aggregate(rte_df, meteo_df, csv_df):
     merged = pd.merge(merged, csv_agg, on="timestamp", how="outer")
     
     merged = merged.sort_values("timestamp").reset_index(drop=True)
+
     merged['solar_production_mw'].interpolate(method='linear', inplace=True)
     merged['consumption_mw'].interpolate(method='linear', inplace=True)
     merged['ghi'].interpolate(method='linear', inplace=True)
